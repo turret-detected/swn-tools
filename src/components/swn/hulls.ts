@@ -1,5 +1,5 @@
-import { CsvParser } from "@nolleh/simple-csv-parser";
-import { ShipHull } from "./types"
+import Papa from 'papaparse';
+import { ShipHull } from "./types";
 import { arrayToDictionary } from "./utils";
 
 
@@ -19,7 +19,19 @@ Small Station,5000000,-1,5,120,20/200,11,50,40,10,Cruiser
 Large Station,40000000,-1,20,120,100/1000,17,125,75,30,Capital
 `
 
-const hulls: ShipHull[] = CsvParser.toObject<ShipHull>(hullCSV) // SO THIS DOESN'T WORK
+function parseShipHulls(csv: string): ShipHull[] {
+    const parsed = Papa.parse(csv, {
+        header: true,
+        skipEmptyLines: true,
+    })
 
-export const hullMap = arrayToDictionary(hulls, 'Name');
+    if (parsed.errors.length > 0) {
+        throw new Error(`CSV parse error: ${parsed.errors[0].message}`);
+    }
 
+    return parsed.data.map((row: any) => new ShipHull(row));
+}
+
+const hulls: ShipHull[] = parseShipHulls(hullCSV)
+
+export const HullMap = arrayToDictionary(hulls, 'Name');
