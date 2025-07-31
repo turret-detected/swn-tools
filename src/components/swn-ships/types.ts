@@ -183,13 +183,13 @@ export class Ship {
         // TODO check min class size
         
         if (this.Hardpoints.Free < weapon.Hardpoints) {
-            throw new Error("insufficent hardpoints")
+            throw new Error("insufficient hardpoints")
         }
         if (this.Power.Free < weapon.Power) {
-            throw new Error("insufficent power")
+            throw new Error("insufficient power")
         }
         if (this.Mass.Free < weapon.Mass) {
-            throw new Error("insufficent mass")
+            throw new Error("insufficient mass")
         }
 
         // javascript is so dumb that this is how i have to add numbers
