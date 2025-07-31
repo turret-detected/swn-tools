@@ -29,3 +29,7 @@ export function RollOnTable(table: RangeResult<string>[], diceCount: number, sid
     const roll = rollDice(diceCount, sides);
     return getResultFromRangeTable(roll, table);
 }
+
+export function RollOnList(list: string[]): string {
+    return list[Math.floor(Math.random() * list.length)]
+}
