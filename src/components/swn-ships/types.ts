@@ -148,7 +148,7 @@ export class Ship {
     Defenses!: Array<ShipDefense>;
     Fittings!: Array<ShipFitting>;
 
-    constructor(hull: ShipHull, weapons: Array<ShipWeapon>, defenses:Array<ShipDefense>, fittings:Array<ShipFitting>) {
+    constructor(hull: ShipHull, weapons: Array<ShipWeapon>, defenses: Array<ShipDefense>, fittings: Array<ShipFitting>) {
         this.Hull = hull.Name
         this.HitPoints = hull.HitPoints
         this.Armor = hull.Armor
@@ -159,7 +159,7 @@ export class Ship {
         this.Hardpoints = new ShipAttr(hull.Hardpoints, hull.Hardpoints)
         this.Crew = hull.Crew
         this.Cost = hull.Cost
-        
+
         for (var weapon of weapons) {
             this.applyWeapon(weapon)
         }
@@ -181,7 +181,7 @@ export class Ship {
 
     applyWeapon(weapon: ShipWeapon): void {
         // TODO check min class size
-        
+
         if (this.Hardpoints.Free < weapon.Hardpoints) {
             throw new Error("insufficient hardpoints")
         }
@@ -201,10 +201,12 @@ export class Ship {
 
     applyDefense(defense: ShipDefense): void {
         // TODO
+        console.log(defense)
     }
 
     applyFitting(fitting: ShipFitting): void {
         // TODO
+        console.log(fitting)
     }
 
     // Raw json only, TODO: real export
