@@ -4,14 +4,14 @@ export type RangeResult<T> = {
     result: T;
 };
 
-function rollDie(sides: number): number {
-    return Math.floor(Math.random() * sides) + 1;
+export function RollDie(sides: number): number {
+    return RandInt(sides) + 1;
 }
 
 function rollDice(count: number, sides: number): number {
     let total = 0;
     for (let i = 0; i < count; i++) {
-        total += rollDie(sides);
+        total += RollDie(sides);
     }
     return total;
 }
@@ -31,5 +31,10 @@ export function RollOnTable(table: RangeResult<string>[], diceCount: number, sid
 }
 
 export function RollOnList(list: string[]): string {
-    return list[Math.floor(Math.random() * list.length)]
+    return list[RandInt(list.length)]
+}
+
+// exclusive of max value
+export function RandInt(max: number): number {
+    return Math.floor(Math.random() * max)
 }

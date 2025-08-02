@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { GeneratePlanet, Planet } from './swn-systems/system'
+import { ViablePlanet } from './swn-systems/star_system'
 
-const planet = ref<Planet | null>(null)
-
-function generate() {
-  planet.value = GeneratePlanet()
-}
-
+const props = defineProps<{
+  planet: ViablePlanet | null
+}>()
 </script>
 
 <template>
@@ -42,9 +38,5 @@ function generate() {
         </tbody>
       </table>
     </div>
-
-    <button type="button" class="bg-green-900 px-5 py-1.5 rounded-xl hover:bg-green-800" @click="generate">
-      Generate Planet
-    </button>
   </div>
 </template>
