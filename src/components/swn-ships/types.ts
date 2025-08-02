@@ -12,7 +12,7 @@ class Dice {
     }
 }
 
-enum ShipClass {
+export enum ShipClass {
     Fighter = "fighter",
     Frigate = "frigate",
     Cruiser = "cruiser",
