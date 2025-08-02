@@ -5,7 +5,10 @@ import SiteHeader from './components/SiteHeader.vue';
 </script>
 
 <template>
-  <SiteHeader />
-  <!-- <Ship/> -->
-  <Planet />
+  <div class="container mx-auto px-4 flex-auto">
+    <SiteHeader />
+    <!-- <Ship/> -->
+    <Planet />
+  </div>
+
 </template>
