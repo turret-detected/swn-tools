@@ -1,4 +1,4 @@
 <template>
-    <h1 class="site-header">SWN Tools</h1>
-    <h2>by turret-detected</h2>
+    <h1 class="text-3xl text-center font-bold underline">SWN Tools</h1>
+    <h2 class="text-center mt-4">by turret-detected</h2>
 </template>
