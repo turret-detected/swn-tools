@@ -9,7 +9,7 @@ Built with Vue.
 ## Planned Features (in no particular order)
 
 - [x] Initial planet generation
-- [ ] Generate full systems with other celestial bodies
+- [x] Generate full systems with other celestial bodies
 - [ ] Generate world tags
 - [ ] Selectively regenerate parts of a planet
 - [ ] Generate system maps as svg files

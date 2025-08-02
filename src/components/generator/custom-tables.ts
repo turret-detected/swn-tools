@@ -1,6 +1,6 @@
 import type { RangeResult } from "./dice";
 
-
+// 1d20
 export const PlanetNameTable: RangeResult<string>[] = [
     { min: 1, max: 1, result: "Luft" },
     { min: 2, max: 2, result: "Pola" },
@@ -23,3 +23,48 @@ export const PlanetNameTable: RangeResult<string>[] = [
     { min: 19, max: 19, result: "Hope" },
     { min: 20, max: 20, result: "Trinity" },
 ];
+
+// 1d100
+export const StarTypeTable: RangeResult<string>[] = [
+    { min: 1, max: 3, result: "A-type" },
+    { min: 4, max: 8, result: "F-type" },
+    { min: 9, max: 30, result: "G-type" },
+    { min: 31, max: 60, result: "K-type" },
+    { min: 61, max: 95, result: "M-type" },
+    { min: 96, max: 100, result: "Red Giant" },
+]
+
+// 1d10
+export const NormalPlanetSizeTable: RangeResult<string>[] = [
+    { min: 1, max: 1, result: "Tiny" },
+    { min: 2, max: 4, result: "Small" },
+    { min: 5, max: 9, result: "Medium" },
+    { min: 10, max: 10, result: "Large" },
+]
+
+// 1d10
+export const JovianPlanetSizeTable: RangeResult<string>[] = [
+    { min: 1, max: 3, result: "Huge" },
+    { min: 4, max: 7, result: "Giant" },
+    { min: 8, max: 10, result: "Massive" },
+]
+
+// 1d100
+export const ViableWorldTypeTable: RangeResult<string>[] = [
+    { min: 1, max: 20, result: "Oceanic" },
+    { min: 21, max: 69, result: "Terran" },
+    { min: 70, max: 90, result: "Desert" },
+    { min: 91, max: 94, result: "Barren" },
+    { min: 95, max: 99, result: "Dysbaric" },
+]
+
+// 1d10
+export const NonViableWorldTypeTable: RangeResult<string>[] = [
+    { min: 1, max: 2, result: "Dysbaric" },
+    { min: 3, max: 8, result: "Barren" },
+    { min: 9, max: 10, result: "Jovian" },
+]
+
+
+
+
