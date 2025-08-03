@@ -12,9 +12,9 @@ function parseShipHulls(csv: string): ShipHull[] {
         dynamicTyping: true,
     })
 
-    if (parsed.errors.length > 0) {
-        throw new Error(`CSV parse error: ${parsed.errors[0].message}`);
-    }
+    // if (parsed.errors.length > 0) {
+    //     throw new Error(`CSV parse error: ${parsed.errors[0].message}`);
+    // }
 
     return parsed.data.map((row: any) => new ShipHull(row));
 }

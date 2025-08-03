@@ -4,7 +4,7 @@ Current deployment: https://swn-tools.pages.dev/
 
 A WIP collection for tools for SWN GMs.
 
-Built with Vue.
+Built with [Nuxt](https://nuxt.com).
 
 ## Planned Features (in no particular order)
 
@@ -17,3 +17,12 @@ Built with Vue.
 - [ ] Generate and modify ships
 - [ ] Export and import ships
 - [ ] Expanded generators
+
+## Development
+
+```sh
+npm install # install deps
+npm run dev # run dev server
+npm run build # do prod build
+npm run preview # preview prod build
+```

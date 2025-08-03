@@ -103,7 +103,7 @@ export function GenerateNonViablePlanet(): NonViablePlanet {
     )
 }
 
-type Planet = ViablePlanet | NonViablePlanet
+export type Planet = ViablePlanet | NonViablePlanet
 
 // class PlanetRender {
 //     Planet: Planet;
