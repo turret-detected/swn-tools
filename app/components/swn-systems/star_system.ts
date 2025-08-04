@@ -6,7 +6,7 @@ export class StarSystem {
     Name: string;
     StarType: string;
     Planets: Planet[];
-    
+
 
 
     constructor(name: string) {
@@ -18,7 +18,7 @@ export class StarSystem {
     public Generate() {
         const beforePlanetCount = RollDie(4)
 
-        // Generate 1-4 planets before // TODO
+        // Generate 1-4 planets before
         for (let index = 0; index < beforePlanetCount; index++) {
             this.Planets.push(GenerateNonViablePlanet())
         }
@@ -28,7 +28,7 @@ export class StarSystem {
 
         const afterPlanetCount = RollDie(4)
 
-        // Generate 1-4 planets after // TODO
+        // Generate 1-4 planets after
         for (let index = 0; index < afterPlanetCount; index++) {
             this.Planets.push(GenerateNonViablePlanet())
         }
@@ -103,7 +103,7 @@ export function GenerateNonViablePlanet(): NonViablePlanet {
     )
 }
 
-type Planet = ViablePlanet | NonViablePlanet
+export type Planet = ViablePlanet | NonViablePlanet
 
 // class PlanetRender {
 //     Planet: Planet;
