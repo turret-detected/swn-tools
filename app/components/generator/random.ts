@@ -25,13 +25,13 @@ function getResultFromRangeTable<T>(roll: number, table: RangeResult<T>[]): T {
     throw new RangeError(`No matching range for roll: ${roll}`);
 }
 
-export function RollOnTable(table: RangeResult<string>[], diceCount: number, sides: number): string {
+export function RollOnTable<T>(table: RangeResult<T>[], diceCount: number, sides: number): T {
     const roll = rollDice(diceCount, sides);
     return getResultFromRangeTable(roll, table);
 }
 
-export function RollOnList(list: string[]): string {
-    return list[RandInt(list.length)]
+export function RollOnList<T>(list: T[]): T {
+    return list[RandInt(list.length)]!
 }
 
 // exclusive of max value

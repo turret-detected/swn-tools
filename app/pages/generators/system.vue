@@ -4,7 +4,7 @@ import CStarSystem from '~/components/CStarSystem.vue';
 import CSidebar from '~/components/CSidebar.vue';
 
 import { ref } from 'vue'
-import { StarSystem } from '~/components/swn-systems/star_system';
+import { StarSystem } from '~/components/swn-systems/star-system';
 import { GenerateStarName } from '~/components/generator/star-names';
 
 const starSystem = ref<StarSystem | null>(null)

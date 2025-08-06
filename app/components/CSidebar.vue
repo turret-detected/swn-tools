@@ -7,10 +7,12 @@ import { store } from './state/store';
         'fixed top-0 left-0 h-full w-64 p-4 pt-10 border-r border-neutral-300',
         store.sidebarIsOpen ? 'block' : 'hidden'
     ]">
-        <div class="text-xl font-bold flex mb-4 ml-4">
-            <button class="w-12 outline rounded" @click="store.sidebarIsOpen = false">x</button>
-        </div>
-
+        <button @click="store.sidebarIsOpen = !store.sidebarIsOpen"
+            class="absolute top-4 left-4 p-2 text-xl border rounded m-4">
+            ☰
+        </button>
+        <br />
+        <br />
         <ul class="space-y-2">
             <li>
                 <NuxtLink to="/" class="block px-3 py-2 rounded hover:bg-neutral-800 font-semibold underline"

@@ -1,37 +1,20 @@
-import type { RangeResult } from "./dice";
 
-// 1d20
-export const PlanetNameTable: RangeResult<string>[] = [
-    { min: 1, max: 1, result: "Luft" },
-    { min: 2, max: 2, result: "Pola" },
-    { min: 3, max: 3, result: "Gullia" },
-    { min: 4, max: 4, result: "Morta" },
-    { min: 5, max: 5, result: "Grimil" },
-    { min: 6, max: 6, result: "Retala" },
-    { min: 7, max: 7, result: "Stocklin" },
-    { min: 8, max: 8, result: "Quenta" },
-    { min: 9, max: 9, result: "Mylara" },
-    { min: 10, max: 10, result: "Lyonov" },
-    { min: 11, max: 11, result: "Delmarn" },
-    { min: 12, max: 12, result: "Europa" },
-    { min: 13, max: 13, result: "Parlin" },
-    { min: 14, max: 14, result: "Fawlon" },
-    { min: 15, max: 15, result: "Fremor" },
-    { min: 16, max: 16, result: "Kral" },
-    { min: 17, max: 17, result: "Vernol" },
-    { min: 18, max: 18, result: "Renewal" },
-    { min: 19, max: 19, result: "Hope" },
-    { min: 20, max: 20, result: "Trinity" },
-];
+import type { RangeResult } from "./random";
+import { StarType } from "./types";
+
+
+// ----
+// Dice Tables
+// ----
 
 // 1d100
-export const StarTypeTable: RangeResult<string>[] = [
-    { min: 1, max: 3, result: "A-type" },
-    { min: 4, max: 8, result: "F-type" },
-    { min: 9, max: 30, result: "G-type" },
-    { min: 31, max: 60, result: "K-type" },
-    { min: 61, max: 95, result: "M-type" },
-    { min: 96, max: 100, result: "Red Giant" },
+export const StarTypeTable: RangeResult<StarType>[] = [
+    { min: 1, max: 3, result: new StarType("A-type", "#DDEFFF") },
+    { min: 4, max: 8, result: new StarType("F-type", "#FAF9F0") },
+    { min: 9, max: 30, result: new StarType("G-type", "#FFE17B") },
+    { min: 31, max: 60, result: new StarType("K-type", "#FFB560") },
+    { min: 61, max: 95, result: new StarType("M-type", "#FF785A") },
+    { min: 96, max: 100, result: new StarType("Red Giant", "#FF6B3C") },
 ]
 
 // 1d10
@@ -66,5 +49,57 @@ export const NonViableWorldTypeTable: RangeResult<string>[] = [
 ]
 
 
+// ----
+// Any length tables
+// ----
 
 
+export const StarPrefixes: string[] = [
+    "HD",
+    "WASP",
+    "LHS",
+    "HIP",
+    "JLS",
+    "SLR",
+    "MAST",
+    "TMA"
+]
+
+export const StarPostfixes: string[] = [
+    "Hydrae",
+    "Scorpii",
+    "Pegasi",
+    "Dracos",
+    "Tauri",
+    "Androma",
+    "Nordae",
+    "Imperi"
+]
+
+export const PlanetNames: string[] = [
+    "Luft",
+    "Pola",
+    "Gullia",
+    "Morta",
+    "Grimil",
+    "Retala",
+    "Stocklin",
+    "Quenta",
+    "Mylara",
+    "Lyonov",
+    "Delmarn",
+    "Europa",
+    "Parlin",
+    "Fawlon",
+    "Fremor",
+    "Kral",
+    "Vernol",
+    "Renewal",
+    "Hope",
+    "Trinity",
+    "Morsa",
+    "Miria",
+    "Alpena",
+    "Dunmore",
+    "Prestia",
+]
