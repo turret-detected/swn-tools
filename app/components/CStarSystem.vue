@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { StarSystem } from './swn-systems/star_system'
+import { StarSystem } from './swn-systems/star-system'
 
 const props = defineProps<{
   starSystem: StarSystem | null
@@ -9,12 +9,12 @@ const props = defineProps<{
 <template>
   <div class="flex flex-col items-center mt-10 space-y-6 w-full max-w-2xl overflow-x-auto">
     <div v-if="starSystem" class="text-2xl text-center font-bold py-0.5">
-      <h2>{{ starSystem.Name }} - {{ starSystem.StarType }} Star </h2>
-      <p class="text-sm font-normal pb-0">*</p>
+      <h2>{{ starSystem.Name }} - {{ starSystem.StarType.Name }} Star </h2>
+      <CStarCircle :star-type="starSystem.StarType" class="m-1" />
     </div>
     <div v-if="starSystem">
       <div v-for="planet in starSystem.Planets">
-        <c-planet :planet="planet"></c-planet>
+        <CPlanet :planet="planet" />
       </div>
     </div>
   </div>

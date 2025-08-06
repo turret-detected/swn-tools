@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ViablePlanet, NonViablePlanet, type Planet } from './swn-systems/star_system'
+import { ViablePlanet, NonViablePlanet, type Planet } from './swn-systems/star-system'
 
 const props = defineProps<{
   planet: Planet

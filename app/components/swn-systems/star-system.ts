@@ -1,21 +1,23 @@
 import { AtmosphereTable, TemperatureTable, BiosphereTable, PopulationTable, TechLevelTable } from "../generator/official-tables";
-import { NonViableWorldTypeTable, PlanetNameTable, StarTypeTable } from "../generator/custom-tables";
-import { RollDie, RollOnTable } from "../generator/dice";
+import { NonViableWorldTypeTable, PlanetNames, StarTypeTable } from "../generator/custom-tables";
+import { RollDie, RollOnList, RollOnTable } from "../generator/random";
+import { StarType } from "../generator/types";
+
 
 export class StarSystem {
     Name: string;
-    StarType: string;
+    StarType: StarType;
     Planets: Planet[];
-
-
 
     constructor(name: string) {
         this.Name = name;
-        this.StarType = "unset"
+        this.StarType = new StarType("unset", "white")
         this.Planets = [];
     }
 
     public Generate() {
+        this.StarType = RollOnTable(StarTypeTable, 1, 100)
+
         const beforePlanetCount = RollDie(4)
 
         // Generate 1-4 planets before
@@ -34,8 +36,6 @@ export class StarSystem {
         }
 
         // TODO HANDLE DUPLICATE PLANET NAMES HERE
-
-        this.StarType = RollOnTable(StarTypeTable, 1, 100)
     }
 }
 
@@ -76,7 +76,7 @@ export class ViablePlanet {
 
 export function GeneratePlanet(): ViablePlanet {
     return new ViablePlanet(
-        RollOnTable(PlanetNameTable, 1, 20),
+        RollOnList(PlanetNames),
         RollOnTable(TemperatureTable, 2, 6),
         RollOnTable(AtmosphereTable, 2, 6),
         RollOnTable(BiosphereTable, 2, 6),
@@ -98,7 +98,7 @@ export class NonViablePlanet {
 
 export function GenerateNonViablePlanet(): NonViablePlanet {
     return new NonViablePlanet(
-        RollOnTable(PlanetNameTable, 1, 20),
+        RollOnList(PlanetNames),
         RollOnTable(NonViableWorldTypeTable, 1, 10),
     )
 }

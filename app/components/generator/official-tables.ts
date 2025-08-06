@@ -1,4 +1,4 @@
-import type { RangeResult } from "./dice";
+import type { RangeResult } from "./random";
 
 // The below tables are ©2017 Sine Nomine Publishing, Inc.
 // Taken from Stars Without Number Revised Free Edition, available here:
