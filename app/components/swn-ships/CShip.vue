@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { HullMap } from './swn-ships/hulls'
-import { WeaponMap } from './swn-ships/weapons'
-import { Ship } from './swn-ships/types'
+import { HullMap } from './hulls'
+import { WeaponMap } from './weapons'
+import { Ship } from './types'
 
 const ship = ref(new Ship(HullMap['strike_fighter'], [WeaponMap['multifocal_laser']], [], []))
 </script>
