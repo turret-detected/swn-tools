@@ -28,6 +28,4 @@ function generate() {
             </div>
         </main>
     </div>
-
-
 </template>

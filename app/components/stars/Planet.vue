@@ -37,6 +37,10 @@ const props = defineProps<{
         <th class="w-40 py-0.5">Tech Level</th>
         <td>{{ planet.TechLevel }}</td>
       </tr>
+      <tr v-if="(planet instanceof ViablePlanet)">
+        <th class="w-40 py-0.5">World Tags</th>
+        <td>{{ planet.Tags[0] }} & {{ planet.Tags[1] }}</td>
+      </tr>
     </tbody>
   </table>
 </template>
