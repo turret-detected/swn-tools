@@ -1,6 +1,6 @@
-import { AtmosphereTable, TemperatureTable, BiosphereTable, PopulationTable, TechLevelTable } from "../generator/official-tables";
+import { AtmosphereTable, TemperatureTable, BiosphereTable, PopulationTable, TechLevelTable, WorldTags } from "../generator/official-tables";
 import { NonViableWorldTypeTable, PlanetNames, StarTypeTable } from "../generator/custom-tables";
-import { RollDie, RollOnList, RollOnTable } from "../generator/random";
+import { RollDie, RollOnList, RollOnTable, RollUniqueOnList } from "../generator/random";
 import { StarType } from "../generator/types";
 
 
@@ -35,7 +35,15 @@ export class StarSystem {
             this.Planets.push(GenerateNonViablePlanet())
         }
 
-        // TODO HANDLE DUPLICATE PLANET NAMES HERE
+        // Fix duplicate planet names
+        let names: string[] = []
+
+        this.Planets.forEach(planet => {
+            if (names.includes(planet.Name)) {
+                planet.Name = RollUniqueOnList(PlanetNames, names)
+            }
+            names.push(planet.Name)
+        });
     }
 }
 
@@ -54,6 +62,7 @@ export class ViablePlanet {
     Biosphere: string;
     Population: string;
     TechLevel: string;
+    Tags: string[];
 
     constructor(
         name: string,
@@ -62,6 +71,7 @@ export class ViablePlanet {
         biosphere: string,
         population: string,
         techLevel: string,
+        tags: string[],
     ) {
         this.Name = name
         this.Temperate = temperate
@@ -69,12 +79,16 @@ export class ViablePlanet {
         this.Biosphere = biosphere
         this.Population = population
         this.TechLevel = techLevel
+        this.Tags = tags
     }
 }
 
 
 
 export function GeneratePlanet(): ViablePlanet {
+    const tag1 = RollOnList(WorldTags)
+    const tag2 = RollUniqueOnList(WorldTags, [tag1])
+
     return new ViablePlanet(
         RollOnList(PlanetNames),
         RollOnTable(TemperatureTable, 2, 6),
@@ -82,6 +96,7 @@ export function GeneratePlanet(): ViablePlanet {
         RollOnTable(BiosphereTable, 2, 6),
         RollOnTable(PopulationTable, 2, 6),
         RollOnTable(TechLevelTable, 2, 6),
+        [tag1, tag2]
     );
 }
 
