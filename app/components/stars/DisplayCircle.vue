@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { StarType } from './generator/types';
+import { StarType } from '~/components/generator/types';
 
 const props = defineProps<{
     starType: StarType | undefined
