@@ -1,15 +1,12 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
-import { StarSystem } from '~/components/stars/star-system';
-import { GenerateStarName } from '~/components/generator/star-names';
-import { StarsSystem } from '#components';
+import { GenerateStarSystem, type StarSystem } from '~/components/stars/star';
 
 const starSystem = ref<StarSystem | null>(null)
 
 function generate() {
-    starSystem.value = new StarSystem(GenerateStarName())
-    starSystem.value.Generate()
+    starSystem.value = GenerateStarSystem();
 }
 </script>
 
@@ -24,7 +21,7 @@ function generate() {
                 <button type="button" class="bg-green-900 px-5 py-1.5 rounded-xl hover:bg-green-800" @click="generate">
                     Generate Star System
                 </button>
-                <StarsSystem :starSystem="starSystem" />
+                <StarsSystem v-model:starSystem="starSystem" />
             </div>
         </main>
     </div>

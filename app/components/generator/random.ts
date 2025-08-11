@@ -49,6 +49,7 @@ export function RollUniqueOnList<T>(list: T[], existing: T[]): T {
 }
 
 // exclusive of max value
+// returns [0, max)
 export function RandInt(max: number): number {
     return Math.floor(Math.random() * max)
 }

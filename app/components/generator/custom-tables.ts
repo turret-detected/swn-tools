@@ -1,6 +1,6 @@
 
 import type { RangeResult } from "./random";
-import { StarType } from "./types";
+import { type StarType } from "./types";
 
 
 // ----
@@ -9,12 +9,12 @@ import { StarType } from "./types";
 
 // 1d100
 export const StarTypeTable: RangeResult<StarType>[] = [
-    { min: 1, max: 3, result: new StarType("A-type", "#DDEFFF") },
-    { min: 4, max: 8, result: new StarType("F-type", "#FAF9F0") },
-    { min: 9, max: 30, result: new StarType("G-type", "#FFE17B") },
-    { min: 31, max: 60, result: new StarType("K-type", "#FFB560") },
-    { min: 61, max: 95, result: new StarType("M-type", "#FF785A") },
-    { min: 96, max: 100, result: new StarType("Red Giant", "#FF6B3C") },
+    { min: 1, max: 3, result: { "name": "A-type", "color": "#DDEFFF" } },
+    { min: 4, max: 8, result: { "name": "F-type", "color": "#FAF9F0" } },
+    { min: 9, max: 30, result: { "name": "G-type", "color": "#FFE17B" } },
+    { min: 31, max: 60, result: { "name": "K-type", "color": "#FFB560" } },
+    { min: 61, max: 95, result: { "name": "M-type", "color": "#FF785A" } },
+    { min: 96, max: 100, result: { "name": "Red Giant", "color": "#FF6B3C" } },
 ]
 
 // 1d10
