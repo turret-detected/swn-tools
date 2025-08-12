@@ -4,6 +4,7 @@ import type { RangeResult } from "./random";
 // Taken from Stars Without Number Revised Free Edition, available here:
 // https://www.drivethrurpg.com/en/product/230009/stars-without-number-revised-edition-free-version
 
+// 2d6
 export const AtmosphereTable: RangeResult<string>[] = [
   { min: 2, max: 2, result: "Corrosive, damaging to foreign objects" },
   { min: 3, max: 3, result: "Inert gas, useless for respiration" },
@@ -14,6 +15,7 @@ export const AtmosphereTable: RangeResult<string>[] = [
   { min: 12, max: 12, result: "Both corrosive and invasive in its effects" },
 ];
 
+// 2d6
 export const TemperatureTable: RangeResult<string>[] = [
   { min: 2, max: 2, result: "Frozen, locked in perpetual ice" },
   { min: 3, max: 3, result: "Cold, dominated by glaciers and tundra" },
@@ -24,6 +26,7 @@ export const TemperatureTable: RangeResult<string>[] = [
   { min: 12, max: 12, result: "Burning, intolerably hot on its surface" },
 ];
 
+// 2d6
 export const BiosphereTable: RangeResult<string>[] = [
   { min: 2, max: 2, result: "Remnant biosphere" },
   { min: 3, max: 3, result: "Microbial life forms exist" },
@@ -34,6 +37,7 @@ export const BiosphereTable: RangeResult<string>[] = [
   { min: 12, max: 12, result: "Engineered biosphere" },
 ];
 
+// 2d6
 export const PopulationTable: RangeResult<string>[] = [
   { min: 2, max: 2, result: "Failed colony" },
   { min: 3, max: 3, result: "Outpost" },
@@ -44,6 +48,7 @@ export const PopulationTable: RangeResult<string>[] = [
   { min: 12, max: 12, result: "Alien inhabitants" },
 ];
 
+// 2d6
 export const TechLevelTable: RangeResult<string>[] = [
   { min: 2, max: 2, result: "TL0, neolithic-level technology" },
   { min: 3, max: 3, result: "TL1, medieval technology" },

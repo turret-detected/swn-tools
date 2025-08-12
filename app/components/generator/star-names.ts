@@ -3,8 +3,7 @@ import { StarPrefixes, StarPostfixes } from "./custom-tables"
 
 
 export function GenerateStarName(): string {
-
-    const flip = RandInt(2)
+    const flip = RandInt(1)
 
     if (flip > 0) {
         return RollOnList(StarPrefixes) + " " + (RandInt(10000) + 10)

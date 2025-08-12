@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { StarType } from '~/components/generator/types';
+import { type StarType } from '~/components/generator/types';
 
 const props = defineProps<{
     starType: StarType | undefined
@@ -7,7 +7,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <span v-if="starType" class="circle" :style="{ backgroundColor: starType.Color }"></span>
+    <span v-if="starType" class="circle" :style="{ backgroundColor: starType.color }"></span>
 </template>
 
 <style lang="css" scoped>

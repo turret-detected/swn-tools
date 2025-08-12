@@ -10,7 +10,7 @@ Built with [Nuxt](https://nuxt.com).
 
 - [x] Initial planet generation
 - [x] Generate full systems with other celestial bodies
-- [ ] Generate world tags
+- [x] Generate world tags
 - [ ] Selectively regenerate parts of a planet
 - [ ] Generate system maps as svg files
 - [ ] Export and import worlds and systems
@@ -26,3 +26,5 @@ npm run dev # run dev server
 npm run build # do prod build
 npm run preview # preview prod build
 ```
+
+For style guidance, reference the [Google Style Guide](https://google.github.io/styleguide/tsguide.html)
