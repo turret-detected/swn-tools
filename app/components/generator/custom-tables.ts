@@ -48,6 +48,28 @@ export const NonViableWorldTypeTable: RangeResult<string>[] = [
     { min: 9, max: 10, result: "Jovian" },
 ]
 
+// 1d20
+export const MineralRarity: RangeResult<string>[] = [
+    { min: 1, max: 14, result: "common" },
+    { min: 15, max: 18, result: "uncommon" },
+    { min: 18, max: 19, result: "rare" },
+    { min: 20, max: 20, result: "exotic" },
+]
+
+// 2d6
+export const AsteroidDepositCount: RangeResult<number>[] = [
+    { min: 2, max: 4, result: 0 },
+    { min: 5, max: 9, result: 1 },
+    { min: 10, max: 11, result: 2 },
+    { min: 12, max: 12, result: 3 },
+]
+
+export const MineralRarityToPricePerTon = {
+    "common": 300,
+    "uncommon": 1500,
+    "rare": 3000,
+    "exotic": 6000,
+}
 
 // ----
 // Any length tables
@@ -103,3 +125,6 @@ export const PlanetNames: string[] = [
     "Dunmore",
     "Prestia",
 ]
+
+// Letters
+export const UppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
