@@ -7,14 +7,16 @@ const props = defineProps<{
 </script>
 
 <template>
-    <span v-if="starType" class="circle" :style="{ backgroundColor: starType.color }"></span>
+    <span v-if="starType" class="circle" :style="{ '--color': starType.color, '--circle-px': '40px' }"></span>
 </template>
 
 <style lang="css" scoped>
 .circle {
-    height: 30px;
-    width: 30px;
+    background-color: var(--color);
+    height: var(--circle-px);
+    width: var(--circle-px);
     border-radius: 50%;
     display: inline-block;
+    box-shadow: 0 0 12px var(--color, rgba(0, 0, 0, 0.3));
 }
 </style>

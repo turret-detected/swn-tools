@@ -8,12 +8,13 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="flex flex-col items-center mt-10 space-y-6 w-full max-w-3xl overflow-x-auto">
-    <div v-if="starSystem" class="text-2xl text-center font-bold py-0.5">
+  <div class="flex flex-col items-center mt-6 w-full max-w-3xl overflow-x-auto">
+    <div v-if="starSystem" class="text-2xl text-center font-bold">
       <h2>{{ starSystem.name }} - {{ starSystem.type.name }} Star </h2>
       <StarsDisplayCircle :star-type="starSystem.type" class="m-1" />
     </div>
     <div v-if="starSystem">
+      <p class="text-lg text-center font-semibold m-1">Planets</p>
       <div v-for="(planet, index) in starSystem.planets">
         <div class="grid grid-cols-9 gap-1">
           <div />

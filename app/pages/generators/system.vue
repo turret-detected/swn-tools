@@ -18,8 +18,10 @@ function generate() {
         <main>
             <div class="container mx-auto flex flex-col items-center mt-8">
                 <NavHeader />
-                <button type="button" class="bg-green-900 px-5 py-1.5 rounded-xl hover:bg-green-800" @click="generate">
-                    Generate Star System
+                <h1 class="m-1 mb-2 text-2xl font-medium">Star System Generator</h1>
+                <button type="button" class="bg-green-900 px-5 py-1.5 rounded-xl hover:bg-green-800 m-1"
+                    @click="generate">
+                    Generate
                 </button>
                 <StarsSystem v-model:starSystem="starSystem" />
             </div>
