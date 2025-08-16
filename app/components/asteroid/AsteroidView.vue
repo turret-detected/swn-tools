@@ -21,16 +21,19 @@ function priceFromRarity(rarity: string): number {
       <table class="min-w-[500px] table-fixed border border-gray-400">
         <thead>
           <tr class="w-80 p-1">
-            <th>Deposits</th>
+            <th>Scan Results</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="deposit in asteroid.deposits">
-            <td class="p-1 text-center">{{ deposit.volume }} tons of {{ deposit.rarity }} mineral worth {{
+            <td class="p-1 text-center">{{ deposit.volume }} tons of {{ deposit.rarity }} minerals worth {{
               priceFromRarity(deposit.rarity) }} credits/ton</td>
           </tr>
-          <tr v-if="asteroid.deposits.length === 0">
-            <td class="text-center">None</td>
+          <tr v-if="asteroid.deposits.length === 0 && !(asteroid.special)">
+            <td class="text-center">Nothing of note</td>
+          </tr>
+          <tr v-if="asteroid.special">
+            <td class="text-center"> {{ asteroid.special }}</td>
           </tr>
         </tbody>
       </table>

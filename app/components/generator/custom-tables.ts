@@ -64,6 +64,7 @@ export const AsteroidDepositCount: RangeResult<number>[] = [
     { min: 12, max: 12, result: 3 },
 ]
 
+// map of mineral to price per ton
 export const MineralRarityToPricePerTon = {
     "common": 300,
     "uncommon": 1500,
@@ -84,47 +85,76 @@ export const StarPrefixes: string[] = [
     "JLS",
     "SLR",
     "MAST",
-    "TMA"
+    "TMA",
+    "OWL",
 ]
 
 export const StarPostfixes: string[] = [
-    "Hydrae",
-    "Scorpii",
-    "Pegasi",
-    "Dracos",
-    "Tauri",
     "Androma",
+    "Cepheus",
+    "Dracos",
+    "Geminora",
+    "Hydrae",
+    "Imperi",
     "Nordae",
-    "Imperi"
+    "Pegasi",
+    "Scorpii",
+    "Tauri",
 ]
 
 export const PlanetNames: string[] = [
-    "Luft",
-    "Pola",
-    "Gullia",
-    "Morta",
-    "Grimil",
-    "Retala",
-    "Stocklin",
-    "Quenta",
-    "Mylara",
-    "Lyonov",
+    "Alpena",
+    "Arion",
+    "Aya",
     "Delmarn",
+    "Dunmore",
+    "Ellii",
     "Europa",
-    "Parlin",
     "Fawlon",
     "Fremor",
-    "Kral",
-    "Vernol",
-    "Renewal",
+    "Grimil",
+    "Gullia",
     "Hope",
-    "Trinity",
-    "Morsa",
+    "Irena",
+    "Kral",
+    "Luft",
+    "Lyonov",
+    "Markova",
     "Miria",
-    "Alpena",
-    "Dunmore",
+    "Morsa",
+    "Morta",
+    "Mylara",
+    "Naron",
+    "Parlin",
+    "Pola",
     "Prestia",
+    "Quenta",
+    "Rego",
+    "Renewal",
+    "Retala",
+    "Silon",
+    "Stocklin",
+    "Trinity",
+    "Ugora",
+    "Veles",
+    "Vernol",
 ]
 
-// Letters
 export const UppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
+
+export const AsteroidSpecials: string[] = [
+    "Abandoned mine: 50% chance of finding pretech salvage",
+    "Active listening station: 25% chance of a patrol ship intercept",
+    "Ancient outpost: 80% chance of finding pretech salvage",
+    "Ancient ship wreckage: 80% chance of finding pretech salvage",
+    "Hazardous minerals: Dangerous radiation forces 1 save per hour while outside a ship or harvesting minerals",
+    "Hidden mine: Miners are not willing to share their riches",
+    "Hidden mine: Miners will trade minerals for supplies",
+    "Isolated asteroid base: Inhabitants have something special to sell",
+    "Isolated asteroid base: Inhabitants act according to a Reaction roll",
+    "Isolated asteroid base: Inhabitants died decades or centuries ago",
+    "Isolated asteroid base: Inhabitants are suffering from a disaster",
+    "Secret pirate base: Roll Int/Program check to avoid being detected",
+    "Trapped asteroid: Roll Dex/Pilot check to avoid 1d6 damage to your ship",
+    "Trapped asteroid: Hostile pirates arrive within 1d6 hours"
+]

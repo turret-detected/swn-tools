@@ -1,4 +1,4 @@
-import { AsteroidDepositCount, MineralRarity, UppercaseLetters } from "../generator/custom-tables"
+import { AsteroidDepositCount, AsteroidSpecials, MineralRarity, UppercaseLetters } from "../generator/custom-tables"
 import { RandInt, RollDice, RollOnList, RollOnTable } from "../generator/random"
 
 export type Deposit = {
@@ -9,6 +9,7 @@ export type Deposit = {
 export type Asteroid = {
     name: string,
     deposits: Deposit[]
+    special: string | null
 }
 
 export function GenerateDeposit(): Deposit {
@@ -33,9 +34,16 @@ export function GenerateAsteroid(): Asteroid {
         deposits.push(GenerateDeposit())
     }
 
+    let special = null
+
+    if (RollDice(1, 20) === 20) {
+        special = RollOnList(AsteroidSpecials)
+    }
+
     return {
         name: GenerateAsteroidName(),
-        deposits: deposits
+        deposits: deposits,
+        special: special
     }
 }
 
