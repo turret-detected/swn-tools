@@ -48,6 +48,29 @@ export const NonViableWorldTypeTable: RangeResult<string>[] = [
     { min: 9, max: 10, result: "Jovian" },
 ]
 
+// 1d20
+export const MineralRarity: RangeResult<string>[] = [
+    { min: 1, max: 14, result: "common" },
+    { min: 15, max: 18, result: "uncommon" },
+    { min: 18, max: 19, result: "rare" },
+    { min: 20, max: 20, result: "exotic" },
+]
+
+// 2d6
+export const AsteroidDepositCount: RangeResult<number>[] = [
+    { min: 2, max: 4, result: 0 },
+    { min: 5, max: 9, result: 1 },
+    { min: 10, max: 11, result: 2 },
+    { min: 12, max: 12, result: 3 },
+]
+
+// map of mineral to price per ton
+export const MineralRarityToPricePerTon = {
+    "common": 300,
+    "uncommon": 1500,
+    "rare": 3000,
+    "exotic": 6000,
+}
 
 // ----
 // Any length tables
@@ -62,44 +85,76 @@ export const StarPrefixes: string[] = [
     "JLS",
     "SLR",
     "MAST",
-    "TMA"
+    "TMA",
+    "OWL",
 ]
 
 export const StarPostfixes: string[] = [
-    "Hydrae",
-    "Scorpii",
-    "Pegasi",
-    "Dracos",
-    "Tauri",
     "Androma",
+    "Cepheus",
+    "Dracos",
+    "Geminora",
+    "Hydrae",
+    "Imperi",
     "Nordae",
-    "Imperi"
+    "Pegasi",
+    "Scorpii",
+    "Tauri",
 ]
 
 export const PlanetNames: string[] = [
-    "Luft",
-    "Pola",
-    "Gullia",
-    "Morta",
-    "Grimil",
-    "Retala",
-    "Stocklin",
-    "Quenta",
-    "Mylara",
-    "Lyonov",
+    "Alpena",
+    "Arion",
+    "Aya",
     "Delmarn",
+    "Dunmore",
+    "Ellii",
     "Europa",
-    "Parlin",
     "Fawlon",
     "Fremor",
-    "Kral",
-    "Vernol",
-    "Renewal",
+    "Grimil",
+    "Gullia",
     "Hope",
-    "Trinity",
-    "Morsa",
+    "Irena",
+    "Kral",
+    "Luft",
+    "Lyonov",
+    "Markova",
     "Miria",
-    "Alpena",
-    "Dunmore",
+    "Morsa",
+    "Morta",
+    "Mylara",
+    "Naron",
+    "Parlin",
+    "Pola",
     "Prestia",
+    "Quenta",
+    "Rego",
+    "Renewal",
+    "Retala",
+    "Silon",
+    "Stocklin",
+    "Trinity",
+    "Ugora",
+    "Veles",
+    "Vernol",
+]
+
+export const UppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
+
+export const AsteroidSpecials: string[] = [
+    "Abandoned mine: 50% chance of finding pretech salvage",
+    "Active listening station: 25% chance of a patrol ship intercept",
+    "Ancient outpost: 80% chance of finding pretech salvage",
+    "Ancient ship wreckage: 80% chance of finding pretech salvage",
+    "Hazardous minerals: Dangerous radiation forces 1 save per hour while outside a ship or harvesting minerals",
+    "Hidden mine: Miners are not willing to share their riches",
+    "Hidden mine: Miners will trade minerals for supplies",
+    "Isolated asteroid base: Inhabitants have something special to sell",
+    "Isolated asteroid base: Inhabitants act according to a Reaction roll",
+    "Isolated asteroid base: Inhabitants died decades or centuries ago",
+    "Isolated asteroid base: Inhabitants are suffering from a disaster",
+    "Secret pirate base: Roll Int/Program check to avoid being detected",
+    "Trapped asteroid: Roll Dex/Pilot check to avoid 1d6 damage to your ship",
+    "Trapped asteroid: Hostile pirates arrive within 1d6 hours"
 ]

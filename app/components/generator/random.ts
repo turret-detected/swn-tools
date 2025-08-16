@@ -8,7 +8,7 @@ export function RollDie(sides: number): number {
     return RandInt(sides) + 1;
 }
 
-function rollDice(count: number, sides: number): number {
+export function RollDice(count: number, sides: number): number {
     let total = 0;
     for (let i = 0; i < count; i++) {
         total += RollDie(sides);
@@ -26,7 +26,7 @@ function getResultFromRangeTable<T>(roll: number, table: RangeResult<T>[]): T {
 }
 
 export function RollOnTable<T>(table: RangeResult<T>[], diceCount: number, sides: number): T {
-    const roll = rollDice(diceCount, sides);
+    const roll = RollDice(diceCount, sides);
     return getResultFromRangeTable(roll, table);
 }
 

@@ -23,6 +23,9 @@ import { store } from '~/components/nav/sidebar-state';
             <li>
                 <NavLink path="/generators/system" title="Star System" />
             </li>
+            <li>
+                <NavLink path="/generators/asteroid" title="Asteroids" />
+            </li>
         </ul>
     </nav>
 </template>
