@@ -8,7 +8,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="flex flex-col items-center mt-6 w-full max-w-3xl overflow-x-auto">
+  <div class="flex flex-col items-center mt-6 w-full max-w-3xl overflow-x-auto m-1">
     <div v-if="starSystem" class="text-2xl text-center font-bold">
       <h2>{{ starSystem.name }} - {{ starSystem.type.name }} Star </h2>
       <StarsDisplayCircle :star-type="starSystem.type" class="m-1" />

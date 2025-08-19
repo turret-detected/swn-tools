@@ -5,7 +5,7 @@ export type RangeResult<T> = {
 };
 
 export function RollDie(sides: number): number {
-    return RandInt(sides) + 1;
+    return RandInt(sides - 1) + 1;
 }
 
 export function RollDice(count: number, sides: number): number {
@@ -31,7 +31,7 @@ export function RollOnTable<T>(table: RangeResult<T>[], diceCount: number, sides
 }
 
 export function RollOnList<T>(list: T[]): T {
-    return list[RandInt(list.length)]!
+    return list[RandInt(list.length - 1)]!
 }
 
 // roll until result is unique among existing list
@@ -51,5 +51,5 @@ export function RollUniqueOnList<T>(list: T[], existing: T[]): T {
 // exclusive of max value
 // returns [0, max)
 export function RandInt(max: number): number {
-    return Math.floor(Math.random() * max)
+    return Math.floor(Math.random() * (max + 1))
 }
