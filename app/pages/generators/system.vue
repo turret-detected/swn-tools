@@ -8,6 +8,10 @@ const starSystem = ref<StarSystem | null>(null)
 function generate() {
     starSystem.value = GenerateStarSystem();
 }
+
+function b64(system: StarSystem): string {
+    return btoa(JSON.stringify(system))
+}
 </script>
 
 <template>
@@ -24,6 +28,10 @@ function generate() {
                     Generate
                 </button>
                 <StarsSystem v-model:starSystem="starSystem" />
+                <a type="button" class="bg-green-900 px-5 py-1.5 rounded-xl hover:bg-green-800 m-1" target="_blank"
+                    v-if="starSystem" :href="'/render/system?system=' + b64(starSystem)">
+                    Render (WIP)
+                </a>
             </div>
         </main>
     </div>

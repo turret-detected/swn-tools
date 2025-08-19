@@ -14,9 +14,13 @@ Built with [Nuxt](https://nuxt.com).
 - [ ] Selectively regenerate parts of a planet
 - [ ] Generate system maps as svg files
 - [ ] Export and import worlds and systems
+- [ ] Support undo/redo when using generate
 - [ ] Generate and modify ships
 - [ ] Export and import ships
-- [ ] Expanded generators
+- [ ] Sane default ships (base game and expanded ones)
+- [ ] Expanded system generation (additional details beyond base game)
+- [ ] Dynamic planet names (some planet names are only for colonized planets,
+      other names are generated with syllabic rules)
 
 ## Development
 
@@ -27,4 +31,5 @@ npm run build # do prod build
 npm run preview # preview prod build
 ```
 
-For style guidance, reference the [Google Style Guide](https://google.github.io/styleguide/tsguide.html)
+For style guidance, reference the
+[Google Style Guide](https://google.github.io/styleguide/tsguide.html)

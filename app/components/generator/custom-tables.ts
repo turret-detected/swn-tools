@@ -87,6 +87,7 @@ export const StarPrefixes: string[] = [
     "MAST",
     "TMA",
     "OWL",
+    "WOLF",
 ]
 
 export const StarPostfixes: string[] = [
@@ -103,9 +104,14 @@ export const StarPostfixes: string[] = [
 ]
 
 export const PlanetNames: string[] = [
+    "Achea",
     "Alpena",
     "Arion",
+    "Asyrea",
     "Aya",
+    "Babylon",
+    "Breton",
+    "Catalon",
     "Delmarn",
     "Dunmore",
     "Ellii",
@@ -113,13 +119,16 @@ export const PlanetNames: string[] = [
     "Fawlon",
     "Fremor",
     "Grimil",
+    "Guardian",
     "Gullia",
     "Hope",
+    "Hund",
     "Irena",
     "Kral",
     "Luft",
     "Lyonov",
     "Markova",
+    "Medas",
     "Miria",
     "Morsa",
     "Morta",
@@ -132,8 +141,10 @@ export const PlanetNames: string[] = [
     "Rego",
     "Renewal",
     "Retala",
+    "Sentinel",
     "Silon",
     "Stocklin",
+    "Thrace",
     "Trinity",
     "Ugora",
     "Veles",
