@@ -111,17 +111,13 @@ export const PlanetNames: string[] = [
     "Aya",
     "Babylon",
     "Breton",
-    "Catalon",
     "Delmarn",
     "Dunmore",
     "Ellii",
-    "Europa",
     "Fawlon",
     "Fremor",
     "Grimil",
-    "Guardian",
     "Gullia",
-    "Hope",
     "Hund",
     "Irena",
     "Kral",
@@ -139,9 +135,7 @@ export const PlanetNames: string[] = [
     "Prestia",
     "Quenta",
     "Rego",
-    "Renewal",
     "Retala",
-    "Sentinel",
     "Silon",
     "Stocklin",
     "Thrace",
@@ -149,6 +143,47 @@ export const PlanetNames: string[] = [
     "Ugora",
     "Veles",
     "Vernol",
+]
+
+// https://en.wikipedia.org/wiki/List_of_Latin_names_of_countries
+// might be some more good ones in here
+export const PlanetNamesPostfixLatin: string[] = [
+    "Achaea",
+    "Arcadia",
+    "Athena",
+    "Austria",
+    "Bohemia",
+    "Britannia",
+    "Bulgaria",
+    "Caledonia",
+    "Catalonia",
+    "Europa",
+    "Francia",
+    "Germania",
+    "Iberia",
+    "Italia",
+    "Moesia",
+    "Olympia",
+    "Polonia",
+    "Prussia",
+    "Romania",
+    "Titania",
+]
+
+export const PlanetNamesPrefixLatin: string[] = [
+    "Alta",
+    "Astra",
+    "Boreal",
+    "Civitas",
+    "Colonia",
+    "Gloria",
+    "Magna",
+    "Nova",
+    "Porta",
+    "Prima",
+    "Provincia",
+    "Silva",
+    "", // allow planets without prefixes
 ]
 
 export const UppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")

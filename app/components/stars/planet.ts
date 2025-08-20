@@ -1,5 +1,5 @@
 import { AtmosphereTable, TemperatureTable, BiosphereTable, PopulationTable, TechLevelTable, WorldTags } from "../generator/official-tables";
-import { NonViableWorldTypeTable, PlanetNames } from "../generator/custom-tables";
+import { NonViableWorldTypeTable, PlanetNames, PlanetNamesPostfixLatin, PlanetNamesPrefixLatin } from "../generator/custom-tables";
 import { RollOnList, RollOnTable, RollUniqueOnList } from "../generator/random";
 
 // define structure of planet data
@@ -28,7 +28,7 @@ export function GeneratePlanet(): ViablePlanet {
     const tag2 = RollUniqueOnList(WorldTags, [tag1])
 
     return {
-        "name": RollOnList(PlanetNames),
+        "name": (RollOnList(PlanetNamesPrefixLatin) + " " + RollOnList(PlanetNamesPostfixLatin)).trim(), // trim to allow "" for prefix
         "temperate": RollOnTable(TemperatureTable, 2, 6),
         "atmosphere": RollOnTable(AtmosphereTable, 2, 6),
         "biosphere": RollOnTable(BiosphereTable, 2, 6),
