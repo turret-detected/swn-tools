@@ -14,7 +14,7 @@ Built with [Nuxt](https://nuxt.com).
 - [ ] Selectively regenerate parts of a planet
 - [ ] Generate system maps as svg files
 - [ ] Export and import worlds and systems
-- [ ] Support undo/redo when using generate
+- [x] Support undo/redo when using generate
 - [ ] Generate and modify ships
 - [ ] Export and import ships
 - [ ] Sane default ships (base game and expanded ones)

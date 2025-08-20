@@ -5,6 +5,18 @@ import { type StarSystem } from './star';
 const props = defineProps<{
   starSystem: StarSystem | null
 }>()
+
+const emit = defineEmits<{
+  (e: 'update:model-value', value: StarSystem | null): void
+}>()
+
+// I thought I needed this but it just works,
+// so we're not going to question it
+//
+// const localStarSystem = computed({
+//   get: () => props.starSystem,
+//   set: (val: StarSystem | null) => emit('update:model-value', val)
+// })
 </script>
 
 <template>
