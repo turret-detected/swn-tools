@@ -53,6 +53,12 @@ export const useStarStore = defineStore("stars", {
             if (this.futureSystems.length > 10) {
                 this.futureSystems = this.futureSystems.slice(-10)
             }
+        },
+        hasUndo() {
+            return this.pastSystems.length > 0
+        },
+        hasRedo() {
+            return this.futureSystems.length > 0
         }
     },
     persist: true
