@@ -12,14 +12,19 @@ Built with [Nuxt](https://nuxt.com).
 - [x] Generate full systems with other celestial bodies
 - [x] Generate world tags
 - [ ] Selectively regenerate parts of a planet
-- [ ] Generate system maps as svg files
-- [ ] Export and import worlds and systems
-- [ ] Support undo/redo when using generate
+- [ ] Add abbr tags and corresponding description of planet info (ex: explain
+      Dysbaric or give world tag description)
+- [ ] i18n support
+- [x] Generate system maps as svg files
+- [x] Export systems
+- [ ] Import systems
+- [x] Support undo/redo when using generate
+- [ ] Support undo/redo when rerolling individual planets
 - [ ] Generate and modify ships
 - [ ] Export and import ships
 - [ ] Sane default ships (base game and expanded ones)
 - [ ] Expanded system generation (additional details beyond base game)
-- [ ] Dynamic planet names (some planet names are only for colonized planets,
+- [ ] Better dynamic planet names (some planet names are only for colonized planets,
       other names are generated with syllabic rules)
 
 ## Development

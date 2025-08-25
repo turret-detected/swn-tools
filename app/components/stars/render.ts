@@ -86,5 +86,4 @@ export function RenderStarSystem(starSystem: StarSystem) {
     }
 
     return drawing
-
 }
