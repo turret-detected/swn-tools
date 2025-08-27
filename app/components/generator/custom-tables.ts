@@ -205,3 +205,53 @@ export const AsteroidSpecials: string[] = [
     "Trapped asteroid: Roll Dex/Pilot check to avoid 1d6 damage to your ship",
     "Trapped asteroid: Hostile pirates arrive within 1d6 hours"
 ]
+
+export const CargoCommonOres: string[] = [
+    "Copper",
+    "Iron",
+    "Tin",
+    "Zinc",
+    "Aluminum",
+]
+
+export const CargoUncommonOres: string[] = [
+    "Cobalt",
+    "Silver",
+    "Gold",
+    "Platinum"
+]
+
+export const PretechPrefix: string[] = [
+    "Axion",
+    "Chromatic",
+    "Dimensional",
+    "Entropic",
+    "Gravitic",
+    "Graviton",
+    "Meson",
+    "Metadimensional",
+    "Nanotech",
+    "Nanite",
+    "Neutron",
+    "Polymorphic",
+    "Protonic",
+    "Quantum",
+    "Tachyon",
+]
+
+export const PretechSuffix: string[] = [
+    "Capacitor",
+    "Circuit",
+    "Condenser",
+    "Dynamo",
+    "Lattice",
+    "Lens",
+    "Loom",
+    "Manifold",
+    "Matrix",
+    "Multiplex",
+    "Oscillator",
+    "Projector",
+    "Relay",
+    "Transceiver",
+]
