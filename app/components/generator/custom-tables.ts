@@ -254,4 +254,5 @@ export const PretechSuffix: string[] = [
     "Projector",
     "Relay",
     "Transceiver",
+    "Weave",
 ]
