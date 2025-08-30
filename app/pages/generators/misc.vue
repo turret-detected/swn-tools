@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CargoCommonOres, CargoUncommonOres, PretechPrefix, PretechSuffix } from '~/components/generator/custom-tables';
+import { CargoCommonOres, CargoUncommonOres, DemocracyNames, EmpireNames, PlanetNamesPostfixLatin, PretechPrefix, PretechSuffix } from '~/components/generator/custom-tables';
 import { RollOnList } from '~/components/generator/random';
 
 const result = ref<string | null>(null)
@@ -10,13 +10,17 @@ function generate() {
 }
 
 const generatorList = [
-    "Flavor - Metal",
-    "Flavor - Pretech Salvage"
+    "Flavor - Metal (WIP)",
+    "Flavor - Pretech Salvage",
+    "Faction - Democracy (WIP)",
+    "Faction - Imperial (WIP)",
 ]
 
 const indexToGenerate = {
     "0": () => { return RollOnList(CargoCommonOres.concat(CargoUncommonOres)) },
-    "1": () => { return RollOnList(PretechPrefix) + " " + RollOnList(PretechSuffix) }
+    "1": () => { return RollOnList(PretechPrefix) + " " + RollOnList(PretechSuffix) },
+    "2": () => { return RollOnList(PlanetNamesPostfixLatin) + "n " + RollOnList(DemocracyNames) },
+    "3": () => { return RollOnList(PlanetNamesPostfixLatin) + "n " + RollOnList(EmpireNames) },
 }
 
 const selected = ref("")

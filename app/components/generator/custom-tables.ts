@@ -256,3 +256,20 @@ export const PretechSuffix: string[] = [
     "Transceiver",
     "Weave",
 ]
+
+export const DemocracyNames: string[] = [
+    "Commonwealth",
+    "Concord",
+    "Federation",
+    "Republic",
+    "States",
+    "Union",
+]
+
+export const EmpireNames: string[] = [
+    "Dominion",
+    "Dynasty",
+    "Empire",
+    "Imperium",
+    "Tsardom",
+]
