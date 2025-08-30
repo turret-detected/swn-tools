@@ -1,6 +1,4 @@
 <script setup lang="ts">
-
-import { ref } from 'vue'
 import AsteroidView from '~/components/asteroid/AsteroidView.vue';
 import { GenerateAsteroid, type Asteroid } from '~/components/asteroid/asteroids';
 
