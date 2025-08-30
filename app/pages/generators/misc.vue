@@ -49,7 +49,7 @@ const selected = ref("")
                     Generate
                 </button>
 
-                <p v-if="result" class="p-1 m-3 outline"> {{ result }}</p>
+                <p v-if="result" class="p-1 m-3 border border-gray-400"> {{ result }}</p>
             </div>
         </main>
     </div>
