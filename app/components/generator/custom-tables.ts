@@ -273,3 +273,98 @@ export const EmpireNames: string[] = [
     "Imperium",
     "Tsardom",
 ]
+
+export const NPCCareers: string[] = [
+    "Courtesan",
+    "Criminal",
+    "Entertainer",
+    "Merchant",
+    "Noble",
+    "Official",
+    "Peasant",
+    "Physician",
+    "Pilot",
+    "Politician",
+    "Scholar",
+    "Soldier",
+    "Spacer",
+    "Technician",
+    "Thug",
+    "Vagabond",
+    "Worker",
+]
+
+export const NPCSkinTone: string[] = [
+    "Pale",
+    "Fair",
+    "Cool Olive",
+    "Warm Olive",
+    "Tanned",
+    "Brown",
+    "Dark Brown ",
+]
+
+export const NPCEyeColor: string[] = [
+    "Blue",
+    "Brown",
+    "Amber",
+    "Hazel",
+    "Green",
+    "Gray",
+]
+
+export const NPCGender: string[] = [
+    "Male",
+    "Female"
+]
+
+export const NPCHairColor: string[] = [
+    "Blonde",
+    "Dirty Blonde",
+    "Brown",
+    "Black",
+    "Red",
+    "Grey",
+]
+
+export const NPCSize: string[] = [
+    "Thin",
+    "Fat",
+    "Short",
+    "Tall",
+    "Short & Fat",
+    "Short & Thin",
+    "Tall & Fat",
+    "Tall & Thin",
+    "Average Size",
+]
+
+export const NPCOutfitColor: string[] = [
+    "Red",
+    "Black",
+    "Gray",
+    "White",
+    "Navy Blue",
+    "Dark Gray",
+    "Blue",
+    "Maroon",
+    "Dark Green",
+    "Tan",
+]
+
+export const NPCOutfitStyle: string[] = [
+    "Modern Casual",
+    "Modern Professional",
+    "Formal Suit",
+    "Jumpsuit",
+    "Weathered Uniform",
+    "Slick Corporate",
+    "Leathers",
+    "Leather Jacket & Jeans",
+    "Classical Clothing",
+    "Tattered Clothes",
+    "Robes",
+    "Lab Coat",
+    "Cargo Pants & T-Shirt",
+    "Exercise Clothing",
+]
