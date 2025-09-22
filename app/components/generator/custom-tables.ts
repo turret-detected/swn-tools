@@ -327,6 +327,12 @@ export const NPCHairColor: string[] = [
     "Grey",
 ]
 
+export const NPCHairStyle: string[] = [
+    "Short",
+    "Long",
+    "Styled",
+]
+
 export const NPCSize: string[] = [
     "Thin",
     "Fat",
@@ -336,7 +342,7 @@ export const NPCSize: string[] = [
     "Short & Thin",
     "Tall & Fat",
     "Tall & Thin",
-    "Average Size",
+    "Of Average Size",
 ]
 
 export const NPCOutfitColor: string[] = [
