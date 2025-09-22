@@ -162,6 +162,29 @@ export const WorldTags: string[] = [
   "Zombies",
 ]
 
+export const Backgrounds: string[] = [
+  "Barbarian",
+  "Clergy",
+  "Courtesan",
+  "Criminal",
+  "Dilettante",
+  "Entertainer",
+  "Merchant",
+  "Noble",
+  "Official",
+  "Peasant",
+  "Physician",
+  "Pilot",
+  "Politician",
+  "Scholar",
+  "Soldier",
+  "Spacer",
+  "Technician",
+  "Thug",
+  "Vagabond",
+  "Worker",
+]
+
 export const ShipHullsCSV: string = `
 name,cost,speed,armor,hp,crew,ac,power,mass,hardp,class
 Strike Fighter,200000,5,5,8,1/1,16,5,2,1,Fighter

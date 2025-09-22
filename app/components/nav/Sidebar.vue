@@ -27,6 +27,9 @@ import { store } from '~/components/nav/sidebar-state';
                 <NavLink path="/generators/asteroid" title="Asteroids" />
             </li>
             <li>
+                <NavLink path="/generators/npc" title="NPCs" />
+            </li>
+            <li>
                 <NavLink path="/generators/misc" title="Other" />
             </li>
         </ul>
