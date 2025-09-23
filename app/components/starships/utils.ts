@@ -1,4 +1,4 @@
-import { ShipClass } from "./types";
+import { ShipClass } from "../generator/types";
 
 export function arrayToDictionary<T, K extends keyof T>(array: T[], key: K): Record<string, T> {
     return array.reduce<Record<string, T>>((obj, item) => {
@@ -9,7 +9,11 @@ export function arrayToDictionary<T, K extends keyof T>(array: T[], key: K): Rec
     }, {});
 }
 
-export function scaleCostToShipSize(cost: number, size: ShipClass): Number {
+export function scaleCostToShipSize(cost: number, size: ShipClass, scales?: boolean): number {
+    if (scales == null || scales == false) {
+        return cost
+    }
+
     switch (size) {
         case ShipClass.Fighter:
             return cost;
@@ -25,7 +29,11 @@ export function scaleCostToShipSize(cost: number, size: ShipClass): Number {
     }
 }
 
-export function scaleMassOrPowerToShipSize(cost: number, size: ShipClass): Number {
+export function scaleMassOrPowerToShipSize(cost: number, size: ShipClass, scales?: boolean): number {
+    if (scales == null || scales == false) {
+        return cost
+    }
+
     switch (size) {
         case ShipClass.Fighter:
             return cost;
@@ -38,5 +46,21 @@ export function scaleMassOrPowerToShipSize(cost: number, size: ShipClass): Numbe
 
         case ShipClass.Capital:
             return cost * 4;
+    }
+}
+
+export function isAboveMinClass(actual: ShipClass, minimum: ShipClass): boolean {
+    switch (minimum) {
+        case ShipClass.Fighter:
+            return true;
+
+        case ShipClass.Frigate:
+            return actual != ShipClass.Fighter
+
+        case ShipClass.Cruiser:
+            return actual != ShipClass.Fighter && actual != ShipClass.Frigate;
+
+        case ShipClass.Capital:
+            return actual == ShipClass.Capital;
     }
 }
