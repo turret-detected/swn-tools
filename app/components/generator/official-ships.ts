@@ -521,7 +521,7 @@ export const ShipDefenses: Record<string, ShipDefense> = {
         "min_class": ShipClass.Frigate,
         "effect": "1 in 6 chance of any given attack missing."
     },
-    "hardpointsened_polyceramic_overlay": {
+    "hardened_polyceramic_overlay": {
         "cost": 25000,
         "cost_scales": true,
         "power": 0,

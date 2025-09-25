@@ -58,7 +58,7 @@ export type Ship = {
     max_crew: number,
     cost: number,
     hardpoints: ShipAttr,
-    weapons: Array<any>,
-    defenses: Array<any>,
-    fittings: Array<any>,
+    weapons: Array<(Weapon & Nameable)>,
+    defenses: Array<Nameable>,
+    fittings: Array<Nameable>,
 }

@@ -1,6 +1,7 @@
+import { startCase, trimEnd } from "lodash";
 import { ShipHulls } from "../generator/official-ships";
 import { type Component, AttachmentType, type Effect, type Ship, type Weapon, type Nameable } from "./types";
-import { isAboveMinClass, scaleCostToShipSize, scaleMassOrPowerToShipSize } from "./utils";
+import { collapseDuplicates, isAboveMinClass, scaleCostToShipSize, scaleMassOrPowerToShipSize } from "./utils";
 
 export function NewShipFromHullType(hull_type: string): Ship {
     const hull_base = ShipHulls[hull_type]!
@@ -64,7 +65,7 @@ export function AddAttachment(
 
     switch (attachment_type) {
         case AttachmentType.Weapon:
-            ship.weapons.push(attachment)
+            ship.weapons.push(attachment as (Component & Weapon & Nameable))
             break;
         case AttachmentType.Defense:
             ship.defenses.push(attachment)
@@ -77,4 +78,69 @@ export function AddAttachment(
     }
 
     return ship
+}
+
+export function GenerateWeaponDescString(ship: Ship): string[] {
+    const weapon_strings: string[] = []
+
+    ship.weapons.forEach(weapon => {
+        const str = startCase(weapon.name!.replaceAll("_", " ")) + " (" + weapon.dmg + ", " + wepPropsToStr(weapon) + ")"
+        weapon_strings.push(str)
+    });
+
+    return collapseDuplicates(weapon_strings)
+}
+
+export function GenerateDefenseDescString(ship: Ship): string[] {
+    const defense_strings: string[] = []
+
+    ship.defenses.forEach(defense => {
+        defense_strings.push(startCase(defense.name!.replace("_", " "))
+        )
+    });
+
+    return collapseDuplicates(defense_strings)
+}
+
+export function GenerateFittingDescString(ship: Ship): string[] {
+    const fitting_strings: string[] = []
+
+    ship.fittings.forEach(fitting => {
+        fitting_strings.push(startCase(fitting.name!.replace("_", " "))
+        )
+    });
+
+    return collapseDuplicates(fitting_strings)
+}
+
+function wepPropsToStr(weapon: Weapon) {
+    let prop_str = ""
+
+    if (weapon.ap > 0) {
+        prop_str += "AP "
+        prop_str += weapon.ap.toString()
+        prop_str += ", "
+    }
+
+    if (weapon.cloud) {
+        prop_str += "Cloud, "
+    }
+
+    if (weapon.ammo) {
+        prop_str += "Ammo "
+        prop_str += weapon.ammo!
+        prop_str += ", "
+    }
+
+    if (weapon.clumsy) {
+        prop_str += "Clumsy, "
+    }
+
+    if (weapon.flak) {
+        prop_str += "Flak, "
+    }
+
+    prop_str = trimEnd(prop_str, ", ")
+
+    return prop_str
 }

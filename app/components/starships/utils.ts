@@ -64,3 +64,24 @@ export function isAboveMinClass(actual: ShipClass, minimum: ShipClass): boolean 
             return actual == ShipClass.Capital;
     }
 }
+
+export function collapseDuplicates(strings: string[]): string[] {
+    const counts = new Map<string, number>();
+
+    // Count occurrences
+    for (const s of strings) {
+        counts.set(s, (counts.get(s) ?? 0) + 1);
+    }
+
+    // Build result
+    const result: string[] = [];
+    for (const [key, count] of counts.entries()) {
+        if (count === 1) {
+            result.push(key);
+        } else {
+            result.push(`${count} ${key}`);
+        }
+    }
+
+    return result;
+}

@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { startCase } from 'lodash';
+import { GenerateDefenseDescString, GenerateFittingDescString, GenerateWeaponDescString } from './ships';
 import type { Nameable, Ship } from './types';
-
+import humanNumber from "human-number";
 
 const props = defineProps<{
     shipData: (Ship & Nameable) | null
@@ -50,19 +52,26 @@ const props = defineProps<{
             </tr>
             <tr>
                 <td>Weapons</td>
-                <td>{{ shipData.weapons }}</td>
+                <td>
+                    <p v-for="value in GenerateWeaponDescString(shipData)">{{ value }}</p>
+                </td>
             </tr>
             <tr>
                 <td>Defenses</td>
-                <td>{{ shipData.defenses }}</td>
+                <td>
+                    <p v-for="value in GenerateDefenseDescString(shipData)">{{ value }}</p>
+                </td>
             </tr>
             <tr>
                 <td>Fittings</td>
-                <td>{{ shipData.fittings }}</td>
+                <td>
+                    <p v-for="value in GenerateFittingDescString(shipData)">{{ value }}</p>
+                </td>
             </tr>
             <tr>
                 <td>Cost</td>
-                <td>{{ shipData.cost }} base price, {{ shipData.cost * 0.05 }} maintenance</td>
+                <td>{{ humanNumber(shipData.cost) }} base price, {{ humanNumber(shipData.cost * 0.05) }} maintenance
+                </td>
             </tr>
         </tbody>
     </table>
