@@ -18,6 +18,12 @@ import { store } from '~/components/nav/sidebar-state';
                 <NavLink path="/" title="Home" />
             </li>
             <li>
+                <h1 class="text-lg pl-3 font-bold ">Builders</h1>
+            </li>
+            <li>
+                <NavLink path="/shipbuilder" title="Starships" />
+            </li>
+            <li>
                 <h1 class="text-lg pl-3 font-bold ">Generators</h1>
             </li>
             <li>
