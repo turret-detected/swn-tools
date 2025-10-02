@@ -1,5 +1,7 @@
+import { ShipDefenses, ShipFittings, ShipWeapons } from "../generator/official-ships";
 import { ShipClass } from "../generator/types";
-import type { NamedItemWithDesc } from "./types";
+import type { Effect, Nameable, NamedItemWithDesc, Ship, Weapon } from "./types";
+import { AttachmentType } from "./types";
 
 export function arrayToDictionary<T, K extends keyof T>(array: T[], key: K): Record<string, T> {
     return array.reduce<Record<string, T>>((obj, item) => {
@@ -8,6 +10,26 @@ export function arrayToDictionary<T, K extends keyof T>(array: T[], key: K): Rec
         obj[objKey.replace(" ", "_").toLowerCase()] = item;
         return obj;
     }, {});
+}
+
+export function getAttachmentByName(name: string, attachment_type: AttachmentType): ((Component & Effect) | (Component & Weapon)) & Nameable {
+    switch (attachment_type) {
+        case AttachmentType.Weapon:
+            return ShipWeapons[name]!;
+
+        case AttachmentType.Defense:
+            return ShipDefenses[name]!;
+
+        case AttachmentType.Fitting:
+            return ShipFittings[name]!;
+
+        case AttachmentType.Mod:
+            throw new Error("")
+    }
+}
+
+export function calculateNPCString(ship: Ship) {
+    return "4 CP, Skill +2, To Hit +4" // TODO use ship info or develop a better system for this
 }
 
 export function scaleCostToShipSize(cost: number, size: ShipClass, scales?: boolean): number {

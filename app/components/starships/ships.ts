@@ -44,6 +44,11 @@ export function AddAttachment(
     if (name === "teleportation_pads" || name === "psionic_anchorpoint") {
         scaledCost = 0
     }
+    
+    // TODO handle the following attachments:
+    // - ablative_hull_compartments
+    // - augmented_plating
+    // - extended_life_support
 
     if (attachment_type == AttachmentType.Weapon) {
         if (ship.hardpoints.free < (attachment as Weapon).hardpoints) {
@@ -143,6 +148,11 @@ export function RemoveAttachment(
         scaledCost = 0
     }
 
+    // TODO handle the following attachments:
+    // - ablative_hull_compartments
+    // - augmented_plating
+    // - extended_life_support
+
     ship.power.free = ship.power.free + scaledPower
     ship.mass.free = ship.mass.free + scaledMass
     ship.cost = ship.cost - scaledCost
@@ -150,8 +160,6 @@ export function RemoveAttachment(
     if (attachment_type == AttachmentType.Weapon) {
         ship.hardpoints.free = ship.hardpoints.free + (attachment as Weapon).hardpoints
     }
-
-    console.log(attachment_name)
 
     return ship
 }
@@ -181,13 +189,22 @@ export function GenerateDefenseDescString(ship: Ship): NamedItemWithDesc[] {
 export function GenerateFittingDescString(ship: Ship): NamedItemWithDesc[] {
     const fitting_strings: NamedItemWithDesc[] = []
     let cargo_count = 0
+    let found_drive = false
+
+    // TODO handle
+    // - smugglers_hold
 
     ship.fittings.forEach(fitting => {
-        if (fitting.name! === "cargo_space") {
+        const name = fitting.name!
+        if (name === "cargo_space") {
             cargo_count++
         }
-        const str = startCase(fitting.name!.replace("_", " "))
-        fitting_strings.push({ name: fitting.name!, desc: str })
+        let str = startCase(name.replace("_", " "))
+        if (name.includes("system_drive") || (name.includes("drive") && name.includes("upgrade"))) {
+            found_drive = true
+            // TODO special text for drive
+        }
+        fitting_strings.push({ name: name, desc: str })
     });
 
     const result = collapseDuplicates(fitting_strings)
@@ -197,6 +214,13 @@ export function GenerateFittingDescString(ship: Ship): NamedItemWithDesc[] {
             name: "cargo_space",
             desc: "XX tons of cargo space".replace("XX", String(scaleCargoToShipSize(cargo_count, ship.class)))
         }
+    }
+
+    if (!found_drive) {
+        result.unshift({
+            "name": "default_drive",
+            "desc": "Spike Drive 1"
+        })
     }
 
     return result

@@ -680,6 +680,7 @@ export const ShipFittings: Record<string, ShipFitting> = {
     },
     "drive_3_upgrade": {
         "cost": 20000,
+        "cost_scales": true,
         "power": 2,
         "power_scales": true,
         "mass": 2,
@@ -730,6 +731,16 @@ export const ShipFittings: Record<string, ShipFitting> = {
         "mass": 4,
         "min_class": ShipClass.Capital,
         "effect": "Holds a thousand cold sleep passengers"
+    },
+    "extended_life_support": {
+        "cost": 5000,
+        "cost_scales": true,
+        "power": 1,
+        "power_scales": true,
+        "mass": 1,
+        "mass_scales": true,
+        "min_class": ShipClass.Fighter,
+        "effect": "Doubles maximum crew size"
     },
     "extended_medbay": {
         "cost": 5000,
@@ -883,7 +894,7 @@ export const ShipFittings: Record<string, ShipFitting> = {
         "power_scales": true,
         "mass": 2,
         "mass_scales": true,
-        "min_class": ShipClass.Frigate,
+        "min_class": ShipClass.Fighter,
         "effect": "Replace spike drive with small system drive"
     },
     "teleportation_pads": {

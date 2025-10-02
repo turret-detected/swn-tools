@@ -20,12 +20,13 @@ Built with [Nuxt](https://nuxt.com).
 - [ ] Import systems
 - [x] Support undo/redo when using generate
 - [ ] Support undo/redo when rerolling individual planets
-- [ ] Generate and modify ships
+- [x] Generate and modify ships
 - [ ] Export and import ships
-- [ ] Sane default ships (base game and expanded ones)
+- [~] Sane default ships (base game and expanded ones)
 - [ ] Expanded system generation (additional details beyond base game)
 - [ ] Better dynamic planet names (some planet names are only for colonized planets,
       other names are generated with syllabic rules)
+- [ ] Better mobile support (sidebar, stacking wide grids, avoiding static widths)
 
 ## Development
 

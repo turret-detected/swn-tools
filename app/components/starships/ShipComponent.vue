@@ -10,10 +10,9 @@ const emit = defineEmits<{
 </script>
 
 <template>
-    <div class="grid grids-cols-5 grid-flow-col width-200">
-        <p class="col-span-4">{{ component.desc }}</p>
-        <!-- <p class="hover:decoration-sky-500" @click="$emit('remove', component.name)">🗑️asd</p> -->
-        <button type="button" class="bg-neutral-900 hover:bg-neutral-700 mx-2 rounded p-0"
+    <div class="grid grid-flow-col">
+        <p class="w-96">{{ component.desc }}</p>
+        <button type="button" class="bg-neutral-900 hover:bg-neutral-700 mx-2 rounded p-0 w-8"
             @click="$emit('remove', component.name)">
             🗑️
         </button>

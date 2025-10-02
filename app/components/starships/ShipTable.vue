@@ -4,6 +4,7 @@ import type { Nameable, Ship } from './types';
 import { AttachmentType } from './types';
 import humanNumber from "human-number";
 import ShipComponent from './ShipComponent.vue';
+import { calculateNPCString } from './utils';
 
 const props = defineProps<{
     shipData: (Ship & Nameable) | null
@@ -53,7 +54,7 @@ const emit = defineEmits<{
             </tr>
             <tr>
                 <td>NPC</td>
-                <td>TODO</td>
+                <td>{{ calculateNPCString(shipData) }}</td>
             </tr>
             <tr>
                 <td>Weapons</td>
