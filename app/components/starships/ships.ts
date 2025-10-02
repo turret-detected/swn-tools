@@ -1,7 +1,7 @@
 import { startCase, trimEnd } from "lodash";
 import { ShipHulls } from "../generator/official-ships";
-import { type Component, AttachmentType, type Effect, type Ship, type Weapon, type Nameable } from "./types";
-import { collapseDuplicates, isAboveMinClass, scaleCostToShipSize, scaleMassOrPowerToShipSize } from "./utils";
+import { type Component, AttachmentType, type Effect, type Ship, type Weapon, type Nameable, type NamedItemWithDesc } from "./types";
+import { collapseDuplicates, isAboveMinClass, scaleCargoToShipSize, scaleCostToShipSize, scaleMassOrPowerToShipSize } from "./utils";
 
 export function NewShipFromHullType(hull_type: string): Ship {
     const hull_base = ShipHulls[hull_type]!
@@ -31,9 +31,19 @@ export function AddAttachment(
     attachment: ((Component & Effect) | (Component & Weapon)) & Nameable,
     attachment_type: AttachmentType,
 ): Ship {
-    const scaledPower = scaleMassOrPowerToShipSize(attachment.power, ship.class, attachment.power_scales)
-    const scaledMass = scaleMassOrPowerToShipSize(attachment.mass, ship.class, attachment.mass_scales)
-    const scaledCost = scaleCostToShipSize(attachment.cost, ship.class, attachment.cost_scales)
+    let scaledPower = scaleMassOrPowerToShipSize(attachment.power, ship.class, attachment.power_scales)
+    let scaledMass = scaleMassOrPowerToShipSize(attachment.mass, ship.class, attachment.mass_scales)
+    let scaledCost = scaleCostToShipSize(attachment.cost, ship.class, attachment.cost_scales)
+
+    if (name === "system_drive") {
+        scaledCost = ShipHulls[ship.hull]!.cost * -0.1
+        scaledPower = scaleMassOrPowerToShipSize(1, ship.class, true) * -1
+        scaledMass = scaleMassOrPowerToShipSize(1, ship.class, true) * -2
+    }
+
+    if (name === "teleportation_pads" || name === "psionic_anchorpoint") {
+        scaledCost = 0
+    }
 
     if (attachment_type == AttachmentType.Weapon) {
         if (ship.hardpoints.free < (attachment as Weapon).hardpoints) {
@@ -68,49 +78,128 @@ export function AddAttachment(
             ship.weapons.push(attachment as (Component & Weapon & Nameable))
             break;
         case AttachmentType.Defense:
-            ship.defenses.push(attachment)
+            ship.defenses.push(attachment as (Component & Effect & Nameable))
             break;
         case AttachmentType.Fitting:
-            ship.fittings.push(attachment)
+            ship.fittings.push(attachment as (Component & Effect & Nameable))
             break;
         case AttachmentType.Mod:
-            break;
+            throw new Error("mods not yet supported")
     }
 
     return ship
 }
 
-export function GenerateWeaponDescString(ship: Ship): string[] {
-    const weapon_strings: string[] = []
+export function RemoveAttachment(
+    ship: Ship,
+    attachment_name: string,
+    attachment_type: AttachmentType,
+) {
+    let attachment: (((Component & Effect) | (Component & Weapon)) & Nameable) | undefined = undefined
+    let index = -1
+
+    switch (attachment_type) {
+        case AttachmentType.Weapon:
+            index = ship.weapons.findIndex(obj => { return attachment_name == obj.name })
+            if (index < 0) {
+                throw new Error("weapon not in array")
+            }
+            attachment = ship.weapons.splice(index, 1)[0]
+            break;
+        case AttachmentType.Defense:
+            index = ship.defenses.findIndex(obj => { return attachment_name === obj.name })
+            if (index < 0) {
+                throw new Error("defense not in array")
+            }
+            attachment = ship.defenses.splice(index, 1)[0]
+            break;
+        case AttachmentType.Fitting:
+            index = ship.fittings.findIndex(obj => { return attachment_name === obj.name })
+            if (index < 0) {
+                throw new Error("fitting not in array")
+            }
+            attachment = ship.fittings.splice(index, 1)[0]
+            break;
+
+        case AttachmentType.Mod:
+            throw new Error("mods not yet supported")
+    }
+
+    if (attachment == undefined) {
+        throw new Error("attachment was undefined. possibly not a supported attachment type")
+    }
+
+    let scaledPower = scaleMassOrPowerToShipSize(attachment.power, ship.class, attachment.power_scales)
+    let scaledMass = scaleMassOrPowerToShipSize(attachment.mass, ship.class, attachment.mass_scales)
+    let scaledCost = scaleCostToShipSize(attachment.cost, ship.class, attachment.cost_scales)
+
+    if (attachment_name === "system_drive") {
+        scaledCost = ShipHulls[ship.hull]!.cost * -0.1
+        scaledPower = scaleMassOrPowerToShipSize(1, ship.class, true) * -1
+        scaledMass = scaleMassOrPowerToShipSize(1, ship.class, true) * -2
+    }
+
+    if (attachment_name === "teleportation_pads" || attachment_name === "psionic_anchorpoint") {
+        scaledCost = 0
+    }
+
+    ship.power.free = ship.power.free + scaledPower
+    ship.mass.free = ship.mass.free + scaledMass
+    ship.cost = ship.cost - scaledCost
+
+    if (attachment_type == AttachmentType.Weapon) {
+        ship.hardpoints.free = ship.hardpoints.free + (attachment as Weapon).hardpoints
+    }
+
+    console.log(attachment_name)
+
+    return ship
+}
+
+export function GenerateWeaponDescString(ship: Ship): NamedItemWithDesc[] {
+    const weapon_strings: NamedItemWithDesc[] = []
 
     ship.weapons.forEach(weapon => {
         const str = startCase(weapon.name!.replaceAll("_", " ")) + " (" + weapon.dmg + ", " + wepPropsToStr(weapon) + ")"
-        weapon_strings.push(str)
+        weapon_strings.push({ name: weapon.name!, desc: str })
     });
 
     return collapseDuplicates(weapon_strings)
 }
 
-export function GenerateDefenseDescString(ship: Ship): string[] {
-    const defense_strings: string[] = []
+export function GenerateDefenseDescString(ship: Ship): NamedItemWithDesc[] {
+    const defense_strings: NamedItemWithDesc[] = []
 
     ship.defenses.forEach(defense => {
-        defense_strings.push(startCase(defense.name!.replace("_", " "))
-        )
+        const str = startCase(defense.name!.replace("_", " "))
+        defense_strings.push({ name: defense.name!, desc: str })
     });
 
     return collapseDuplicates(defense_strings)
 }
 
-export function GenerateFittingDescString(ship: Ship): string[] {
-    const fitting_strings: string[] = []
+export function GenerateFittingDescString(ship: Ship): NamedItemWithDesc[] {
+    const fitting_strings: NamedItemWithDesc[] = []
+    let cargo_count = 0
 
     ship.fittings.forEach(fitting => {
-        fitting_strings.push(startCase(fitting.name!.replace("_", " "))
-        )
+        if (fitting.name! === "cargo_space") {
+            cargo_count++
+        }
+        const str = startCase(fitting.name!.replace("_", " "))
+        fitting_strings.push({ name: fitting.name!, desc: str })
     });
 
-    return collapseDuplicates(fitting_strings)
+    const result = collapseDuplicates(fitting_strings)
+    const index = result.findIndex(obj => { return obj.name === "cargo_space" })
+    if (index > -1) {
+        result[index] = {
+            name: "cargo_space",
+            desc: "XX tons of cargo space".replace("XX", String(scaleCargoToShipSize(cargo_count, ship.class)))
+        }
+    }
+
+    return result
 }
 
 function wepPropsToStr(weapon: Weapon) {

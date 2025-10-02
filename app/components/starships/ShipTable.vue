@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { startCase } from 'lodash';
 import { GenerateDefenseDescString, GenerateFittingDescString, GenerateWeaponDescString } from './ships';
 import type { Nameable, Ship } from './types';
+import { AttachmentType } from './types';
 import humanNumber from "human-number";
+import ShipComponent from './ShipComponent.vue';
 
 const props = defineProps<{
     shipData: (Ship & Nameable) | null
 }>()
+const emit = defineEmits<{
+    (e: "remove", attachment_name: string, attachment_type: AttachmentType): void;
+    (e: "setName", name: string): void;
+}>();
 </script>
 
 <template>
@@ -53,19 +58,31 @@ const props = defineProps<{
             <tr>
                 <td>Weapons</td>
                 <td>
-                    <p v-for="value in GenerateWeaponDescString(shipData)">{{ value }}</p>
+                    <div v-for="value in GenerateWeaponDescString(shipData)">
+                        <ShipComponent
+                            @remove="(attachment_name) => emit('remove', attachment_name, AttachmentType.Weapon)"
+                            :component="value"></ShipComponent>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>Defenses</td>
                 <td>
-                    <p v-for="value in GenerateDefenseDescString(shipData)">{{ value }}</p>
+                    <div v-for="value in GenerateDefenseDescString(shipData)">
+                        <ShipComponent
+                            @remove="(attachment_name) => emit('remove', attachment_name, AttachmentType.Defense)"
+                            :component="value"></ShipComponent>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>Fittings</td>
                 <td>
-                    <p v-for="value in GenerateFittingDescString(shipData)">{{ value }}</p>
+                    <div v-for="value in GenerateFittingDescString(shipData)">
+                        <ShipComponent
+                            @remove="(attachment_name) => emit('remove', attachment_name, AttachmentType.Fitting)"
+                            :component="value"></ShipComponent>
+                    </div>
                 </td>
             </tr>
             <tr>

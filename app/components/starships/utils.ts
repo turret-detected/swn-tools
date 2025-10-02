@@ -1,4 +1,5 @@
 import { ShipClass } from "../generator/types";
+import type { NamedItemWithDesc } from "./types";
 
 export function arrayToDictionary<T, K extends keyof T>(array: T[], key: K): Record<string, T> {
     return array.reduce<Record<string, T>>((obj, item) => {
@@ -49,6 +50,23 @@ export function scaleMassOrPowerToShipSize(cost: number, size: ShipClass, scales
     }
 }
 
+// returns tons
+export function scaleCargoToShipSize(fitting_count: number, size: ShipClass): number {
+    switch (size) {
+        case ShipClass.Fighter:
+            return fitting_count * 2;
+
+        case ShipClass.Frigate:
+            return fitting_count * 20;
+
+        case ShipClass.Cruiser:
+            return fitting_count * 200;
+
+        case ShipClass.Capital:
+            return fitting_count * 2000;
+    }
+}
+
 export function isAboveMinClass(actual: ShipClass, minimum: ShipClass): boolean {
     switch (minimum) {
         case ShipClass.Fighter:
@@ -65,21 +83,23 @@ export function isAboveMinClass(actual: ShipClass, minimum: ShipClass): boolean 
     }
 }
 
-export function collapseDuplicates(strings: string[]): string[] {
+export function collapseDuplicates(strings: NamedItemWithDesc[]): NamedItemWithDesc[] {
     const counts = new Map<string, number>();
+    const values = new Map<string, NamedItemWithDesc>();
 
     // Count occurrences
     for (const s of strings) {
-        counts.set(s, (counts.get(s) ?? 0) + 1);
+        counts.set(s.name, (counts.get(s.name) ?? 0) + 1);
+        values.set(s.name, s)
     }
 
     // Build result
-    const result: string[] = [];
+    const result: NamedItemWithDesc[] = [];
     for (const [key, count] of counts.entries()) {
         if (count === 1) {
-            result.push(key);
+            result.push(values.get(key)!);
         } else {
-            result.push(`${count} ${key}`);
+            result.push({ name: values.get(key)!.name, desc: `${count} ${values.get(key)!.desc}` });
         }
     }
 

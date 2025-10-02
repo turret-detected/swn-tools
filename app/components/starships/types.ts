@@ -58,7 +58,14 @@ export type Ship = {
     max_crew: number,
     cost: number,
     hardpoints: ShipAttr,
-    weapons: Array<(Weapon & Nameable)>,
-    defenses: Array<Nameable>,
-    fittings: Array<Nameable>,
+    weapons: Array<(Component & Weapon & Nameable)>,
+    defenses: Array<(Component & Effect & Nameable)>,
+    fittings: Array<(Component & Effect & Nameable)>,
+}
+
+// Desc
+
+export type NamedItemWithDesc = {
+    desc: string
+    name: string
 }

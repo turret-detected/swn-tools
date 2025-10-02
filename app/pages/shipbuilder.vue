@@ -3,10 +3,10 @@ import { startCase } from 'lodash';
 import ShipTable from '~/components/starships/ShipTable.vue';
 import ShipBuilderSelector from '~/components/starships/ShipBuilderSelector.vue';
 import { ShipDefenses, ShipFittings, ShipHulls, ShipWeapons } from '~/components/generator/official-ships';
-import { AddAttachment, NewShipFromHullType } from '~/components/starships/ships';
-import { AttachmentType, type Ship } from '~/components/starships/types';
+import { AddAttachment, NewShipFromHullType, RemoveAttachment } from '~/components/starships/ships';
+import { AttachmentType, type Nameable, type Ship } from '~/components/starships/types';
 
-const currentShip = ref<Ship | null>(null)
+const currentShip = ref<(Ship & Nameable) | null>(null)
 
 function selectHull(hull: string) {
     currentShip.value = NewShipFromHullType(hull)
@@ -48,16 +48,32 @@ function addFitting(fitting_name: string) {
     )
 }
 
+function removeAttachment(attachment_name: string, attachment_type: AttachmentType) {
+    if (currentShip.value == null) {
+        return
+    }
+    currentShip.value = RemoveAttachment(
+        currentShip.value,
+        attachment_name,
+        attachment_type,
+    )
+}
+
+function setName(name: string) {
+    if (currentShip.value == null) {
+        return
+    }
+    currentShip.value.name = name
+}
+
+
 // TODO:
 // - try and catch exceptions for adding attachments
 // - show toast on failure to add
-// - removal functionality
 // - ship name generator/input
-// - import/export ship
-// - change how attachments are stored (probably only need name and vital stats)
+// - import/export/print ship
 // - support state/undo/redo, try to reuse existing star gen system and make it generic
 // - add button to fill remaining free mass with cargo space, on hover preview tonnage
-// - add cargo space calculator
 </script>
 
 <template>
@@ -87,7 +103,10 @@ function addFitting(fitting_name: string) {
                     button_text="Add Fitting" v-bind:ship_class="currentShip?.class">
                 </ShipBuilderSelector>
 
-                <ShipTable v-model:shipData="currentShip"></ShipTable>
+                <ShipTable
+                    @remove="(attachment_name, attachment_type) => removeAttachment(attachment_name, attachment_type)"
+                    @set-name="(name) => setName(name)" v-model:shipData="currentShip">
+                </ShipTable>
             </div>
         </main>
     </div>
