@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { startCase } from 'lodash';
 import ShipTable from '~/components/starships/ShipTable.vue';
 import ShipBuilderSelector from '~/components/starships/ShipBuilderSelector.vue';
 import { ShipDefenses, ShipFittings, ShipHulls, ShipWeapons } from '~/components/generator/official-ships';
@@ -8,6 +7,7 @@ import { AttachmentType, type Nameable, type Ship } from '~/components/starships
 import { ExampleShips } from '~/components/starships/defaults';
 
 const currentShip = ref<(Ship & Nameable) | null>(null)
+const toast = useToast()
 
 function selectHull(hull: string) {
     currentShip.value = NewShipFromHullType(hull)
@@ -17,36 +17,70 @@ function addWeapon(weapon_name: string) {
     if (currentShip.value == null) {
         return
     }
-    currentShip.value = AddAttachment(
-        currentShip.value,
-        weapon_name,
-        ShipWeapons[weapon_name]!,
-        AttachmentType.Weapon,
-    )
+    try {
+        currentShip.value = AddAttachment(
+            currentShip.value,
+            weapon_name,
+            ShipWeapons[weapon_name]!,
+            AttachmentType.Weapon,
+        )
+    } catch (error) {
+        toast.add(
+            {
+                "severity": "error",
+                "summary": "Failed",
+                "life": 5000,
+                "detail": error,
+            }
+        )
+    }
 }
 
 function addDefense(defense_name: string) {
     if (currentShip.value == null) {
         return
     }
-    currentShip.value = AddAttachment(
-        currentShip.value,
-        defense_name,
-        ShipDefenses[defense_name]!,
-        AttachmentType.Defense,
-    )
+    try {
+        currentShip.value = AddAttachment(
+            currentShip.value,
+            defense_name,
+            ShipDefenses[defense_name]!,
+            AttachmentType.Defense,
+        )
+    } catch (error) {
+        toast.add(
+            {
+                "severity": "error",
+                "summary": "Failed",
+                "life": 5000,
+                "detail": error,
+            }
+        )
+    }
+
 }
 
 function addFitting(fitting_name: string) {
     if (currentShip.value == null) {
         return
     }
-    currentShip.value = AddAttachment(
-        currentShip.value,
-        fitting_name,
-        ShipFittings[fitting_name]!,
-        AttachmentType.Fitting,
-    )
+    try {
+        currentShip.value = AddAttachment(
+            currentShip.value,
+            fitting_name,
+            ShipFittings[fitting_name]!,
+            AttachmentType.Fitting,
+        )
+    } catch (error) {
+        toast.add(
+            {
+                "severity": "error",
+                "summary": "Failed",
+                "life": 5000,
+                "detail": error,
+            }
+        )
+    }
 }
 
 function removeAttachment(attachment_name: string, attachment_type: AttachmentType) {
@@ -73,8 +107,6 @@ function setShip(ship_name: string) {
 
 
 // TODO:
-// - try and catch exceptions for adding attachments
-// - show toast on failure to add
 // - ship name generator/input
 // - import/export/print ship
 // - support state/undo/redo, try to reuse existing star gen system and make it generic
@@ -88,6 +120,7 @@ function setShip(ship_name: string) {
         <NavSidebar />
 
         <main>
+            <Toast />
             <div class="container mx-auto flex flex-col items-center mt-8">
                 <NavHeader />
 

@@ -27,6 +27,7 @@ Built with [Nuxt](https://nuxt.com).
 - [ ] Better dynamic planet names (some planet names are only for colonized planets,
       other names are generated with syllabic rules)
 - [ ] Better mobile support (sidebar, stacking wide grids, avoiding static widths)
+- [ ] Ship mods
 
 ## Development
 
