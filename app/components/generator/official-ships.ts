@@ -271,7 +271,7 @@ export const ShipWeapons: Record<string, ShipWeapon> = {
         "hardpoints": 1,
         "min_class": ShipClass.Frigate,
         "tech_level": 4,
-        "ap": 20,
+        "ap": 10,
         "clumsy": false,
         "flak": true,
         "cloud": false
@@ -285,7 +285,7 @@ export const ShipWeapons: Record<string, ShipWeapon> = {
         "hardpoints": 1,
         "min_class": ShipClass.Frigate,
         "tech_level": 4,
-        "ap": 0,
+        "ap": 20,
         "clumsy": false,
         "ammo": 4,
         "flak": false,
@@ -312,7 +312,7 @@ export const ShipWeapons: Record<string, ShipWeapon> = {
         "hardpoints": 1,
         "min_class": ShipClass.Frigate,
         "tech_level": 4,
-        "ap": 20,
+        "ap": 10,
         "clumsy": false,
         "flak": false,
         "cloud": false
