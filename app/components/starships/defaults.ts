@@ -2,8 +2,6 @@ import { ShipDefenses, ShipFittings, ShipWeapons } from "../generator/official-s
 import { AddAttachment, NewShipFromHullType } from "./ships";
 import { AttachmentType, type Ship } from "./types";
 
-// TODO
-// make it so the user cannot permanently (without refreshing anyway) modify presets
 export const ExampleShips: Record<string, Ship> = {
     "fighter_dogfighter": newFighterDogfighter(),
     "fighter_patrol": newFighterPatrol(),

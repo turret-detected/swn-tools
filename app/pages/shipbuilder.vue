@@ -5,6 +5,7 @@ import { ShipDefenses, ShipFittings, ShipHulls, ShipWeapons } from '~/components
 import { AddAttachment, NewShipFromHullType, RemoveAttachment } from '~/components/starships/ships';
 import { AttachmentType, type Nameable, type Ship } from '~/components/starships/types';
 import { ExampleShips } from '~/components/starships/defaults';
+import { cloneDeep } from 'lodash';
 
 const currentShip = ref<(Ship & Nameable) | null>(null)
 const toast = useToast()
@@ -102,7 +103,7 @@ function setName(name: string) {
 }
 
 function setShip(ship_name: string) {
-    currentShip.value = ExampleShips[ship_name]!
+    currentShip.value = cloneDeep(ExampleShips[ship_name]!)
 }
 
 
